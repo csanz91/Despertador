@@ -24,14 +24,13 @@
 #define pinWR 1
 #define pinDATA 0
 #define pinCLK 3
-#define pinFCN 2
+#define pinFCN 19
 #define pinAlarma 3
-#define pinStop 21
+#define pinStop 2
 #define pinTrigger 8
 #define pinEcho 11
-#define pinLDR 0
-#define pinTemp 1
-
+#define pinLDR A0
+#define pinLEDs 13
 
 //Constantes
 #define DS1307_ADDRESS 0x68					//RTC I2C address
@@ -44,7 +43,9 @@
 #define OFF 0
 #define TIEMPO_MOSTRAR_ALARMA 24 //200.000 us * 25 = 5 seg
 #define DIST_SNOOZE 20
-#define MARGEN_LUMINOSIDAD 200
+#define MARGEN_LUMINOSIDAD 650
+#define TIEMPO_SNOOZE 300
+#define TIEMPO_ALARMA_ACTIVADA 1500
 #define DIA 1
 #define NOCHE 0
 #define DIGITO_HORA 1
@@ -53,21 +54,33 @@
 #define DIGITO_MES 4
 #define DIGITO_DIA_SEMANA 2
 #define DIGITO_ANO 5
+#define NUM_CONTADOR_PARPADEO 1
+#define TIEMPO_MEDIR_TEMP 20
+#define TIEMPO_MEDIR_LUM 50
+#define INSTENSIDAD_LEDS_SNOOZE 40
+#define LIMITE_BOTON_CAP 500
+#define POS_MEM 0
 
 
 
 //Variables globales
 volatile char seleccion_menu, contador_mostrar_alarma, flag_mostrar_alarma, seleccion_anterior,estado_alarma,
  flag_boton_funcion_corta, flag_boton_funcion_larga, color_digitos, contador_actualizar_hora, contador_boton_funcion,
- flag_actualizar_reloj, flag_medir_temp, snooze, flag_dormido, alarma_activada, flag_parpadeo, contador_parpadeo, estado_parpadeo,
- flag_medir_luminosidad, contador_medir_luminosidad, digito_seleccionado;
+ flag_actualizar_reloj, snooze, flag_dormido, alarma_activada, flag_parpadeo, contador_parpadeo, estado_parpadeo,
+ flag_medir_luminosidad, contador_medir_luminosidad, digito_seleccionado, flag_parpadeo_digitos, estado_parpadeo_digitos,
+ contador_parpadeo_digitos, color_parpadeo, flag_edicion, flag_clean_screen, flag_actualizar_temp, flag_boton_stop,
+ flag_boton_fcn, estado_boton_stop, estado_boton_fcn, salida_pulsacion_larga, contador_boton_stop, flag_sonido;
  
- float temp;
+ int temp;
  
- volatile int contador_alarma_activada, contador_medir_temp, contador_snooze, contador_dormido;
+ volatile int contador_alarma_activada, contador_snooze, contador_dormido, contador_actualizar_temp, intensidad_leds;
  
  char modo_edicion, luz;
 
- 
+	
+
+
+
+
 
 

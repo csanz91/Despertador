@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <avr/pgmspace.h>
 #include <string.h>
 #include "ht1632c.h"
 #include "Print.h"
@@ -288,7 +289,7 @@ void ht1632c::pwm(uint8_t value)
 
 void ht1632c::sendframe()
 {
-  uint8_t data, offs, cs;
+  uint8_t offs, cs;
   uint8_t addr, csm;
   csm = cs_max;
 
@@ -342,7 +343,7 @@ inline void ht1632c::_update_fb(uint8_t *ptr, uint8_t target, uint8_t pixel)
 
 void ht1632c::plot (uint8_t x, uint8_t y, uint8_t color)
 {
-  uint8_t val, csm;
+  uint8_t val;
   uint8_t addr;
 
   if (x > x_max)
@@ -399,7 +400,7 @@ uint8_t ht1632c::putchar(int x, int y, char c, uint8_t color, uint8_t attr, uint
 void ht1632c::putbitmap(int x, int y, prog_uint16_t *bitmap, uint8_t w, uint8_t h, uint8_t color)
 {
   uint16_t dots, msb;
-  char col, row;
+  char row;
 
   if (x < -w || x > x_max + w || y < -h || y > y_max + h)
     return;

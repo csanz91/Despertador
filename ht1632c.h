@@ -6,6 +6,7 @@
 #ifndef ht1632c_h
 #define ht1632c_h
 
+
 #if defined(ARDUINO) && ARDUINO >= 100
 #include <Arduino.h>
 #else
@@ -99,8 +100,8 @@ uint16_t inline pgm_read_word_near(uint16_t *ptr) { return (uint16_t)*ptr; }
 //#define FONT_6x13B   8
 //#define FONT_6x13O   9
 //#define FONT_6x9    10
-//#define FONT_7x13   11
-//#define FONT_7x13B  12
+#define FONT_7x13   11
+#define FONT_7x13B  12
 //#define FONT_7x13O  13
 #define FONT_7x14   14
 #define FONT_7x14B  15
